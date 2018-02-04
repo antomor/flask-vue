@@ -16,6 +16,12 @@ class Development(Config):
     SECRET_KEY = 'SuperSecretKey'
 
 
+class Testing(Config):
+    MODE = 'Testing'
+    TESTING = True
+    DEBUG = True
+
+
 class Production(Config):
     MODE = 'Production'
     DEBUG = False
