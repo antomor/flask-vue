@@ -32,3 +32,5 @@ class Production(Config):
 # Set FLASK_CONFIG env to 'Production' or 'Development' to set Config
 flask_config = os.environ.get('FLASK_CONFIG', 'Development')
 app.config.from_object('app.config.{}'.format(flask_config))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask-vue.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
