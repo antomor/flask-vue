@@ -33,6 +33,7 @@ class Production(Config):
 flask_config = os.environ.get('FLASK_CONFIG', 'Development')
 app.config.from_object('app.config.{}'.format(flask_config))
 
-#db_uri = os.environ.get('SQLALCHEMY_DATABASE_URI', 'sqlite:////tmp/flask-vue.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/flask-vue.db'
+db_uri = os.environ.get('SQLALCHEMY_DATABASE_URI', 'sqlite:////tmp/flask-vue.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+app.logger.info('>>> Database: {}'.format(app.config['SQLALCHEMY_DATABASE_URI']))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
