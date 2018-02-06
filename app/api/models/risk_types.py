@@ -23,10 +23,12 @@ class RiskType(db.Model):
         db.session.commit()
 
     def serialize(self):
+        fields_serialized = [field.serialize() for field in self.fields]
         return {
             'id': self.id,
             'name': self.name,
-            'description': self.description
+            'description': self.description,
+            'fields': fields_serialized
         }
     # def __repr__(self):
     #     return '<RiskType %d %r %r>' % (self.id, self.name, self.description)
@@ -59,6 +61,14 @@ class RiskField(db.Model):
 
     # def __repr__(self):
     #     return '<RiskField %d %r>' % (self.id, self.name)
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'value': self.value,
+            'type': self.risk_field_type.name
+        }
 
 
 class RiskFieldType(db.Model):
