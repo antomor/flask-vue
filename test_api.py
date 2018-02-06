@@ -20,14 +20,6 @@ class ApiTestCase(unittest.TestCase):
     def test_get_risk_types_by_id(self):
         res = self.client().get('/api/risk-types/1')
         self.assertEqual(res.status_code, 200)
-    
-    def test_get_all_risk_type_fields(self):
-        res = self.client().get('/api/risk-types/1/fields')
-        self.assertEqual(res.status_code, 200)
-    
-    def test_get_risk_type_field_by_id(self):
-        res = self.client().get('/api/risk-types/1/fields/1')
-        self.assertEqual(res.status_code, 200)
 
 def main():
     unittest.main()

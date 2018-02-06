@@ -63,15 +63,26 @@ npm install
 cd ../../../
 ```
 
-6. Database: by default it will be used the local file in the root of the repo, but for any change it can be upgraded with:
+6. Database: Database has to be generated
+```
+python manage.py db upgrade
+```
+It can be also filled with an initial set of data:
+```
+python manage.py seed
+```
+
+For any change it can be upgraded with:
 
 ```
-python migrate db migrate 
+python manage.py db migrate 
 ```
 and 
 ```
-python migrate db upgrade
+python manage.py db upgrade
 ```
+
+The default location of the database is `/tmp/flask-vue.db`, but it can be easily changed by setting the environment variable `SQLALCHEMY_DATABASE_URI`
 
 7. Run the application
 ```
