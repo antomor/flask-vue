@@ -15,7 +15,7 @@ class RiskTypesApi(BaseResource):
 
     def get(self):
         risk_types = RiskType.get_all()
-        return jsonify({'risk-types': [risk.serialize() for risk in risk_types]})
+        return jsonify({'riskTypes': [risk.serialize() for risk in risk_types]})
 
 
 @rest_resource
@@ -27,4 +27,4 @@ class RiskTypeApi(BaseResource):
         risk = [risk for risk in RiskType.get_all() if risk.id == id]
         if len(risk) == 0:
             abort(404)
-        return jsonify({'risk-type': risk[0].serialize()})
+        return jsonify({'riskType': risk[0].serialize()})
