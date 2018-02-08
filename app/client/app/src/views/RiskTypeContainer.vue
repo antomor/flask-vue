@@ -4,13 +4,13 @@
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
-          Risk type - {{riskTypeName}}
+          Risk type - {{riskType ? riskType.name : ''}}
         </p>
       </header>
       <div class="card-content">
         <div class="content">
           <p>
-            {{riskTypeDescription}}
+            {{riskType ? riskType.description : '' }}
           </p>
 
           <div v-if="hasFields">
@@ -58,19 +58,7 @@ export default {
       if (this.resource) {
         return this.resource.riskType
       }
-      return {}
-    },
-    riskTypeName () {
-      if (this.riskType.name) {
-        return this.riskType.name
-      }
-      return ''
-    },
-    riskTypeDescription () {
-      if (this.riskType.description) {
-        return this.riskType.description
-      }
-      return ''
+      return null
     },
     hasFields () {
       return this.riskType && this.riskType.fields && this.riskType.fields.length > 0
