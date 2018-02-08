@@ -20,7 +20,7 @@ def seed():
     date_type = RiskFieldType(name='date')
     date_type.save()
     
-    sex_type = RiskFieldType(name='sex')
+    sex_type = RiskFieldType(name='enum_sex')
     sex_type.save()
 
     sex_values = [
@@ -35,7 +35,7 @@ def seed():
     auto_fields = [
         RiskField(name='person age', risk_type_id=auto_r.id, value='23', risk_field_type_id=number_type.id),
         RiskField(name='address', risk_type_id=auto_r.id, value='Regent street, London', risk_field_type_id=text_type.id),
-        RiskField(name='birth_date', risk_type_id=auto_r.id, value='01/23/2018', risk_field_type_id=date_type.id),
+        RiskField(name='birth_date', risk_type_id=auto_r.id, value='2018-01-23', risk_field_type_id=date_type.id),
         RiskField(name='sex', risk_type_id=auto_r.id, value='F', risk_field_type_id=sex_type.id)
     ]
     for f in auto_fields:
@@ -45,9 +45,9 @@ def seed():
     house_r.save()
     house_fields = [
         RiskField(name='person age', risk_type_id=house_r.id, value='23', risk_field_type_id=number_type.id),
-        RiskField(name='address', risk_type_id=house_r.id, value='Regent street, London', risk_field_type_id=text_type.id),
-        RiskField(name='birth_date', risk_type_id=house_r.id, value='01/23/2018', risk_field_type_id=date_type.id),
-        RiskField(name='sex', risk_type_id=house_r.id, value='F', risk_field_type_id=sex_type.id)
+        RiskField(name='address', risk_type_id=house_r.id, value='50th Avenue, New York', risk_field_type_id=text_type.id),
+        RiskField(name='birth_date', risk_type_id=house_r.id, value='2018-12-31', risk_field_type_id=date_type.id),
+        RiskField(name='sex', risk_type_id=house_r.id, value='M', risk_field_type_id=sex_type.id)
     ]
     for f in house_fields:
         f.save()

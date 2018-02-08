@@ -4,109 +4,30 @@
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
-          {{this.$route.params}} Risk type {{resource}}
+          Risk type - {{riskType.name}}
         </p>
       </header>
       <div class="card-content">
         <div class="content">
+          <p>
+            {{riskType.description}}
+          </p>
 
           <div v-if="hasFields">
-            <div class="field" v-for="field in fields" :key="field.id">
-              <label class="label">{{field.name}} : {{field.type}}</label>
+            <field-container class="field" v-for="field in fields" :key="field.id" :field="field"></field-container>
+            
+            <div class="field is-grouped">
               <div class="control">
-                <input class="input" type="text" placeholder="Text input" :value="field.value"> 
+                <button class="button is-link">Submit</button>
+              </div>
+              <div class="control">
+                <button class="button is-text">Cancel</button>
               </div>
             </div>
           </div>
-
-          <!-- SAMPLE BULMA FORM -->
-          <div class="field">
-            <label class="label">Name</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Text input">
-            </div>
+          <div v-if="!hasFields">
+            No fields saved
           </div>
-
-          <div class="field">
-            <label class="label">Username</label>
-            <div class="control has-icons-left has-icons-right">
-              <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-              <span class="icon is-small is-left">
-                <i class="fa fa-user"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fa fa-check"></i>
-              </span>
-            </div>
-            <p class="help is-success">This username is available</p>
-          </div>
-
-          <div class="field">
-            <label class="label">Email</label>
-            <div class="control has-icons-left has-icons-right">
-              <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-              <span class="icon is-small is-left">
-                <i class="fa fa-envelope"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fa fa-warning"></i>
-              </span>
-            </div>
-            <p class="help is-danger">This email is invalid</p>
-          </div>
-
-          <div class="field">
-            <label class="label">Subject</label>
-            <div class="control">
-              <div class="select">
-                <select>
-                  <option>Select dropdown</option>
-                  <option>With options</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">Message</label>
-            <div class="control">
-              <textarea class="textarea" placeholder="Textarea"></textarea>
-            </div>
-          </div>
-
-          <div class="field">
-            <div class="control">
-              <label class="checkbox">
-                <input type="checkbox">
-                I agree to the <a href="#">terms and conditions</a>
-              </label>
-            </div>
-          </div>
-
-          <div class="field">
-            <div class="control">
-              <label class="radio">
-                <input type="radio" name="question">
-                Yes
-              </label>
-              <label class="radio">
-                <input type="radio" name="question">
-                No
-              </label>
-            </div>
-          </div>
-
-          <div class="field is-grouped">
-            <div class="control">
-              <button class="button is-link">Submit</button>
-            </div>
-            <div class="control">
-              <button class="button is-text">Cancel</button>
-            </div>
-          </div>
-          <!-- SAMPLE BULMA FORM -->
-
-
         </div>
       </div>
     </div>
@@ -116,10 +37,17 @@
 
 <script>
 
+import FieldContainer from '../components/FieldContainer'
+
 export default {
   name: 'RiskTypeContainer',
+  components: {
+    'field-container': FieldContainer
+  },
   data () {
+    const res = { 'riskType': { 'description': 'Risk linked to a vehicle', 'fields': [ { 'id': 1, 'name': 'person age', 'type': 'number', 'value': '23' }, { 'id': 2, 'name': 'address', 'type': 'text', 'value': 'Regent street, London' }, { 'id': 3, 'name': 'birth_date', 'type': 'date', 'value': '2018-01-23' }, { 'id': 4, 'name': 'sex', 'type': 'enum_sex', 'value': 'F' } ], 'id': 1, 'name': 'automobile' } }
     return {
+      res: res
     }
   },
   computed: {
@@ -133,7 +61,7 @@ export default {
       return {}
     },
     hasFields () {
-      return this.riskType && this.riskType.fields && this.riskType.fields > 0
+      return this.riskType && this.riskType.fields && this.riskType.fields.length > 0
     },
     fields () {
       return this.riskType.fields

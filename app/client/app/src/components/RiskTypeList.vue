@@ -36,22 +36,10 @@ export default {
       res: res
     }
   },
-  watch: {
-    viewToggleOther (bool) {
-      this.setToggle('other', bool)
-    }
-  },
-  methods: {
-    setToggle: function (name, bool) {
-      console.log('Toggle Called')
-      // this.$store.commit('setToggle', [name, bool])
-    }
-  },
   computed: {
     resource () {
       // To display `resourceOne` value from the backend
-      // return this.$store.state.resource
-      return this.res
+      return this.$store.state.resource
     },
     riskTypes () {
       return this.res.riskTypes

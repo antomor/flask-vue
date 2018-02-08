@@ -30,8 +30,6 @@ class RiskType(db.Model):
             'description': self.description,
             'fields': fields_serialized
         }
-    # def __repr__(self):
-    #     return '<RiskType %d %r %r>' % (self.id, self.name, self.description)
 
 
 class RiskField(db.Model):
@@ -59,15 +57,16 @@ class RiskField(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    # def __repr__(self):
-    #     return '<RiskField %d %r>' % (self.id, self.name)
-
     def serialize(self):
+        enum_values = [
+            enum_value.value for enum_value in self.risk_field_type.values]
         return {
             'id': self.id,
             'name': self.name,
             'value': self.value,
-            'type': self.risk_field_type.name
+            'typeId': self.risk_field_type.id,
+            'type': self.risk_field_type.name,
+            'enumValues': enum_values
         }
 
 
@@ -92,9 +91,6 @@ class RiskFieldType(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    # def __repr__(self):
-    #     return '<RiskFieldType %d %r>' % (self.id, self.name)
-
 
 class RiskFieldEnumValue(db.Model):
     """ 
@@ -117,6 +113,3 @@ class RiskFieldEnumValue(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
-    # def __repr__(self):
-    #     return '<RiskFieldEnumValue %d %d %r>' % (self.id, self.risk_field_type_id, self.value)
