@@ -3,7 +3,7 @@ Sample project using flask and vue.js ecosystem.
 It aims to solve a business problem regarding the definition of customizable risk types within the context of an insurance.
 
 ## Live demo
-LINK TO BE ADDED
+It is available a version deployed with Heroku [flask-vue](https://flask-vue-risk-types.herokuapp.com/) .
 
 ## Getting Started
 
@@ -58,12 +58,14 @@ npm install
     npm run build 
     ```
 
+**Important: In order to let the client app to point to the right backend API, check the URL set in the `backend.js` file.**
+
 5. Move back to the root project directory
 ```
 cd ../../../
 ```
 
-6. Database: Database has to be generated
+6. Database: it has to be generated
 ```
 python manage.py db upgrade
 ```
@@ -83,6 +85,9 @@ python manage.py db upgrade
 ```
 
 The default location of the database is `/tmp/flask-vue.db`, but it can be easily changed by setting the environment variable `SQLALCHEMY_DATABASE_URI`
+
+Here an ER diagram of the data model.
+![alt text](./ER_Diagram.png)
 
 7. Run the application
 ```
