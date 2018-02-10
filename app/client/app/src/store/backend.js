@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-let hostUrl = 'http://127.0.0.1:5000/api/'
-// let hostUrl = 'https://flask-vue-risk-types.herokuapp.com/api/';
+// let hostUrl = 'http://127.0.0.1:5000/api/'
+let hostUrl = 'https://flask-vue-risk-types.herokuapp.com/api/'
 
 let $backend = axios.create({
   baseURL: hostUrl,
