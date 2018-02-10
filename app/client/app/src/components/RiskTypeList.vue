@@ -10,9 +10,9 @@
       <div class="card-content">
         <div class="content">
           <div v-if="!isEmpty">
-            <ul>
+            <div class="columns">
               <risk-type-item v-for="riskType in riskTypes" :key="riskType.id" :riskType="riskType"></risk-type-item>
-            </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -31,9 +31,7 @@ export default {
     'risk-type-item': RiskTypeItem
   },
   data () {
-    const res = { 'riskTypes': [ { 'description': 'Risk linked to a vehicle', 'fields': [ { 'id': 1, 'name': 'person age', 'type': 'number', 'value': '23' }, { 'id': 2, 'name': 'address', 'type': 'text', 'value': 'Regent street, London' }, { 'id': 3, 'name': 'birth_date', 'type': 'date', 'value': '01/23/2018' }, { 'id': 4, 'name': 'sex', 'type': 'sex', 'value': 'F' } ], 'id': 1, 'name': 'automobile' }, { 'description': 'Risk linked to a house', 'fields': [ { 'id': 5, 'name': 'person age', 'type': 'number', 'value': '23' }, { 'id': 6, 'name': 'address', 'type': 'text', 'value': 'Regent street, London' }, { 'id': 7, 'name': 'birth_date', 'type': 'date', 'value': '01/23/2018' }, { 'id': 8, 'name': 'sex', 'type': 'sex', 'value': 'F' } ], 'id': 2, 'name': 'house' } ] }
     return {
-      res: res
     }
   },
   computed: {
@@ -42,10 +40,10 @@ export default {
       return this.$store.state.resource
     },
     riskTypes () {
-      return this.res.riskTypes
+      return this.resource.riskTypes
     },
     isEmpty () {
-      return !this.res.riskTypes || this.res.riskTypes.length === 0
+      return !this.resource || !this.resource.riskTypes || this.resource.riskTypes.length === 0
     }
   },
   mounted () {

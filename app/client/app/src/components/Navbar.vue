@@ -1,19 +1,14 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="#">
-        <img src="../assets/img/logo.png">
-      </a>
-      <a class="navbar-item" href="#">
-        Flask-Vue
-      </a>
-    </div>
-    <div class="navbar-menu">
-      <div class="navbar-end">
-        <span class="navbar-item is-size-7 is-dark">{{version}}</span>
-      </div>
-    </div>
-  </nav>
+  <section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+       <a href="#/">{{title}}</a>
+    </p>
+    <p class="subtitle">
+      {{subtitle}}
+    </p>
+  </div>
+</section>
 </template>
 <script>
 
@@ -21,7 +16,8 @@ export default {
   name: 'Navbar',
   data () {
     return {
-      version: this.$store.state.version
+      title: 'Flask-vue',
+      subtitle: 'A sample usage of flask and vue.js'
     }
   }
 }

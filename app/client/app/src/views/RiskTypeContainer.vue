@@ -4,24 +4,27 @@
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
-          Risk type - {{riskType ? riskType.name : ''}}
+          {{riskTypeName}}
         </p>
       </header>
       <div class="card-content">
         <div class="content">
           <p>
-            {{riskType ? riskType.description : '' }}
+            {{riskType ? riskType.description : 'RiskType description' }}
           </p>
 
-          <div v-if="hasFields">
-            <field-container class="field" v-for="field in fields" :key="field.id" :field="field"></field-container>
+          <div v-if="hasFields" class="columns is-tablet">
             
-            <div class="field is-grouped">
-              <div class="control">
-                <button class="button is-link">Submit</button>
-              </div>
-              <div class="control">
-                <button class="button is-text">Cancel</button>
+            <div class="column is-6-tablet">
+              <field-container class="field" v-for="field in fields" :key="field.id" :field="field"></field-container>
+            
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link is-primary">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-text">Cancel</button>
+                </div>
               </div>
             </div>
           </div>
@@ -60,16 +63,14 @@ export default {
       }
       return null
     },
+    riskTypeName () {
+      return this.riskType ? this.riskType.name.toUpperCase() : 'RiskType name'
+    },
     hasFields () {
       return this.riskType && this.riskType.fields && this.riskType.fields.length > 0
     },
     fields () {
       return this.riskType.fields
-    }
-  },
-  methods: {
-    someMethod () {
-      // Do Something
     }
   },
   mounted () {

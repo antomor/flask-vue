@@ -1,20 +1,21 @@
 import axios from 'axios'
 
-// let hostUrl = 'http://127.0.0.1:5000/api/';
-let hostUrl = 'https://flask-vue-risk-types.herokuapp.com/api/';
+let hostUrl = 'http://127.0.0.1:5000/api/'
+// let hostUrl = 'https://flask-vue-risk-types.herokuapp.com/api/';
 
 let $backend = axios.create({
-    baseURL: hostUrl,
-    timeout: 5000,
-    headers: {'Content-Type': 'application/json'}
+  baseURL: hostUrl,
+  timeout: 5000,
+  headers: {'Content-Type': 'application/json'}
 })
 
-$backend.interceptors.response.use(function (response) {
+$backend.interceptors.response.use(
+  function (response) {
     return response
   }, function (error) {
     console.log(error)
     return Promise.reject(error)
-  });
+  })
 
 export default {
 

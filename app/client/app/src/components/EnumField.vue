@@ -2,7 +2,7 @@
   <div class="field">
     <label class="label">{{field.name}}: {{field.type}}</label>
     <div class="control">
-      <div class="select">
+      <div class="select is-primary">
         <select>
           <option v-for="(enumValue, idx) in field.enumValues" :key="idx" :value="field.value" :selected="enumValue === field.value ? 'selected': ''">
             {{ enumValue }}

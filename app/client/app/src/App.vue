@@ -3,8 +3,10 @@
 
     <nav>
         <router-view name="navbar"></router-view>
+        <router-view name="hero"></router-view>
         <router-view name="subnavbar"></router-view>
     </nav>
+    
 
     <section class="section">
       <transition name="fade">
@@ -15,14 +17,19 @@
         </div>
       </transition>
     </section>
-
+    <custom-footer />
 </div>
 </template>
 
 <script>
 
+import Footer from './components/Footer'
+
 export default {
   name: '',
+  components: {
+    'custom-footer': Footer
+  },
   computed: {
     isLoading () {
       return this.$store.state.isLoading
