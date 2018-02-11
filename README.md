@@ -113,7 +113,6 @@ python test_api.py
 ```
 2. Front-end Unit tests
 ```
-cd app/client/app
 No unit test configured at the moment.
 ```
 3. E2E tests
