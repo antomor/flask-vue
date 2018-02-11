@@ -7,7 +7,7 @@
   </section>
 </template>
 <script>
-import RiskTypeList from '../components/riskTypeList'
+import RiskTypeList from '../components/RiskTypeList'
 
 export default {
   name: 'RiskTypeListContainer',
